@@ -1,63 +1,80 @@
+// Menu Button and Navigation Links
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
 
-menuBtn.addEventListener("click", (e) => {
+menuBtn.addEventListener("click", () => {
   navLinks.classList.toggle("open");
 
   const isOpen = navLinks.classList.contains("open");
   menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
 });
 
-navLinks.addEventListener("click", (e) => {
+navLinks.addEventListener("click", () => {
   navLinks.classList.remove("open");
   menuBtnIcon.setAttribute("class", "ri-menu-line");
 });
 
+// Search Toggle
 const navSearch = document.getElementById("nav-search");
 
-navSearch.addEventListener("click", (e) => {
+navSearch.addEventListener("click", () => {
   navSearch.classList.toggle("open");
 });
 
-const scrollRevealOption = {
+// Scroll Reveal Animation
+const scrollRevealOptions = {
   distance: "50px",
   origin: "bottom",
   duration: 1000,
 };
 
 ScrollReveal().reveal(".header__image img", {
-  ...scrollRevealOption,
+  ...scrollRevealOptions,
   origin: "right",
 });
+
 ScrollReveal().reveal(".header__content div", {
   duration: 1000,
   delay: 500,
 });
+
 ScrollReveal().reveal(".header__content h1", {
-  ...scrollRevealOption,
+  ...scrollRevealOptions,
   delay: 1000,
 });
+
 ScrollReveal().reveal(".header__content p", {
-  ...scrollRevealOption,
+  ...scrollRevealOptions,
   delay: 1500,
 });
 
 ScrollReveal().reveal(".deals__card", {
-  ...scrollRevealOption,
+  ...scrollRevealOptions,
   interval: 500,
 });
 
 ScrollReveal().reveal(".about__image img", {
-  ...scrollRevealOption,
+  ...scrollRevealOptions,
   origin: "right",
 });
+
 ScrollReveal().reveal(".about__card", {
   duration: 1000,
   interval: 500,
   delay: 500,
 });
 
+// Swiper Initialization
 const swiper = new Swiper(".swiper", {
   loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  autoplay: {
+    delay: 3000,
+  },
+  slidesPerView: 1,
+  spaceBetween: 20,
 });
